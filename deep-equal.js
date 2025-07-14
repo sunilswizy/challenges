@@ -10,7 +10,8 @@ const obj1 = {
             age: 10,
             price: 20,
             arr: [1, 2, 3, { key: 'test' }]
-        }
+        },
+        age: null
     }
 }
 
@@ -25,7 +26,8 @@ const obj2 = {
             age: 10,
             price: 20,
             arr: [1, 2, 3, { key: 'test' }]
-        }
+        },
+        age: null
     }
 }
 
@@ -48,10 +50,12 @@ function isEqual(obj1, obj2) {
 }
 
 function compareValues(value1, value2) {
+    if(value1 === null || value2 === null) return value1 === value2
+
     if(Array.isArray(value1) && Array.isArray(value2)) {
         if(!isEqualArray(value1, value2)) return false
     }
-    else if(typeof value1 == 'object' && typeof value2 == 'object') {
+    else if(typeof value1 === 'object' && typeof value2 === 'object') {
         if(!isEqual(value1, value2)) return false 
     }
     else if(value1 != value2) {
@@ -61,7 +65,7 @@ function compareValues(value1, value2) {
 }
 
 function isEqualArray(arr1, arr2) {
-    if(arr1.length != arr2.length) return false
+    if(arr1.length !== arr2.length) return false
     
     for(let i = 0; i < arr1.length; i++) {
         if(!compareValues(arr1[i], arr2[i])) return false
