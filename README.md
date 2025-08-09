@@ -1,1 +1,1 @@
-Javascipts problems and challenges
+Javascipt problems and challenges
